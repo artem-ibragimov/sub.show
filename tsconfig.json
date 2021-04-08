@@ -1,0 +1,12 @@
+{
+   "compilerOptions": {
+      "target": "es3",
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "baseUrl": "./",
+      "strict": true,
+      "allowJs": false,
+      "checkJs": false,
+      "removeComments": true
+   },
+}

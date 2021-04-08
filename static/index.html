@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta charset='utf-8'>
+      <title>MRT</title>
+      <link href='https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto&display=swap'
+         rel='stylesheet'>
+      <link rel='stylesheet' href='./style.css'>
+      <script async='true' src='./app.js'></script>
+   </head>
+
+   <body>
+      <div id='root' class='yellow'>
+
+         <div id='content'>
+            <div id='container'>
+
+               <div class='list_item row_flex bordered'>
+                  <label for='choose_video_btn' class='pointer'>
+                     <h2>🎞️ choose video file</h2>
+                  </label>
+                  <input type='file' multiple='false' accept='video/*' id='choose_video_btn' />
+               </div>
+
+               <div class='list_item row_flex bordered'>
+                  <label for='choose_primary_sub_btn' class='pointer'>
+                     <h2>📄 choose primary subtitles file</h2>
+                  </label>
+                  <input type='file' multiple='false' accept='.vtt,.srt' id='choose_primary_sub_btn' />
+               </div>
+
+               <div class='list_item row_flex bordered'>
+                  <label for='choose_secondary_sub_btn' class='pointer'>
+                     <h2>📝 choose secondary subtitles file </h2>
+                  </label>
+                  <input type='file' multiple='false' accept='.vtt,.srt' id='choose_secondary_sub_btn' />
+               </div>
+
+               <div class='list_item row_flex bordered'>
+                  <h2>⏮️ step size:
+                     <input type='number' value='3' id='step_size_inpt' class='icon_size yellow' />
+                     sec [press <button>Ctrl</button> key]
+                  </h2>
+               </div>
+
+               <div class='list_item row_flex'>
+                  <video id='video_el' controls preload='auto'>
+                     <track id='primary_sub_el' kind='subtitles' label='Primary' />
+                     <track id='secondary_sub_el' kind='subtitles' label='Secondary' />
+                     Your browser doesn't support embedded videos.
+                  </video>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </body>
+
+</html>
