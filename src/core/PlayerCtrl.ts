@@ -16,6 +16,7 @@ export class PlayerController extends EventBus<Action, Partial<IState>> {
    constructor() {
       super();
       this.stepback = this.stepback.bind(this);
+      this.onseeked = this.onseeked.bind(this);
       this.timeupdate = this.timeupdate.bind(this);
    }
 
@@ -32,8 +33,8 @@ export class PlayerController extends EventBus<Action, Partial<IState>> {
    }
 
    private stepback_first(timestamp: number) {
-      this.start_timestamp = timestamp;
       this.end_timestamp = this.state.video.timestamp;
+      this.start_timestamp = timestamp;
       this.set_state({
          video: { timestamp },
          primary_sub: { is_visible: true },
@@ -55,6 +56,13 @@ export class PlayerController extends EventBus<Action, Partial<IState>> {
          this.start_timestamp <= this.state.video.timestamp &&
          this.state.video.timestamp <= this.end_timestamp
       ) { return; }
+      this.hide_subs();
+   }
+
+   onseeked({ timestamp }: { timestamp: number; }) {
+      if (timestamp === this.start_timestamp) { return; }
+      this.start_timestamp = 0;
+      this.end_timestamp = 0;
       this.hide_subs();
    }
 

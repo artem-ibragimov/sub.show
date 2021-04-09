@@ -12,6 +12,7 @@ const secondary_sub_el = video_el.querySelector('#secondary_sub_el') as HTMLTrac
 
 const player_cmp = new PlayerComponent(video_el, primary_sub_el, secondary_sub_el);
 const player_ctrl = new PlayerController();
+player_cmp.on('onseeked', player_ctrl.onseeked);
 player_cmp.on('timeupdate', player_ctrl.timeupdate);
 player_ctrl.on('state_change', player_cmp.state_change);
 

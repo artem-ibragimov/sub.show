@@ -9,6 +9,7 @@ export class PlayerComponent extends EventBus<Action, IEvent>{
    ) {
       super();
       this.state_change = this.state_change.bind(this);
+      video_el.onseeked = this.onseeked.bind(this);
       video_el.ontimeupdate = this.ontimeupdate.bind(this);
       video_el.removeAttribute('hidden');
    }
@@ -27,6 +28,10 @@ export class PlayerComponent extends EventBus<Action, IEvent>{
 
    private ontimeupdate() {
       this.dispatch('timeupdate', { timestamp: this.video_el.currentTime });
+   }
+
+   private onseeked() {
+      this.dispatch('onseeked', { timestamp: this.video_el.currentTime });
    }
 
    /**
@@ -67,4 +72,4 @@ interface IEvent {
    timestamp: number;
 }
 
-type Action = 'timeupdate' ;
+type Action = 'timeupdate' | 'onseeked';
